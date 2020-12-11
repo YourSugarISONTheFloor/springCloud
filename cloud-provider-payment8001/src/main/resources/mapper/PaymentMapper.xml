@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.fantuan.pay.dao.PaymentDao">
+
+    <!--自定义返回结果集-->
+    <resultMap id="BaseResultMap" type="cn.fantuan.springcloud.entities.Payment">
+        <!--column：数据库的字段、property：实体类的字段、jdbcType：数据库中数据类型-->
+        <id column="id" property="id" jdbcType="BIGINT"></id>
+        <id column="serial" property="serial" jdbcType="VARCHAR"></id>
+    </resultMap>
+
+    <!--useGeneratedKeys 取值范围true、false 默认值是：false。 含义：设置是否使用JDBC的getGenereatedKeys方法获取主键并赋值到keyProperty设置的领域模型属性中。
+        keyProperty 取id的key值，主要是在主键是自增的情况下，添加成功后可以直接使用主键值，其中keyProperty的值是对象的属性值不是数据库表中的字段名。
+        Mybatis的Mapper文件中的select、insert、update、delete元素中都有一个parameterType属性，用于对应的mapper接口方法接受的参数类型。-->
+    <insert id="create" parameterType="cn.fantuan.springcloud.entities.Payment" useGeneratedKeys="true" keyProperty="id">
+            insert into payment(serial) values(#{serial});
+    </insert>
+
+    <select id="getPayment" parameterType="Long" resultMap="BaseResultMap">
+            select * from payment where id=#{id}
+    </select>
+</mapper>
