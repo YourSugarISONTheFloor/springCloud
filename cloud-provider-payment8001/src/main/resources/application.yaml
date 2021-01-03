@@ -19,7 +19,8 @@ eureka:
     fetchRegistry: true
     service-url:
       #集群版，是一个数组用逗号分隔开
-      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
+#      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
   instance:
     ####更改主机名
     instance-id: payment8001

@@ -55,10 +55,11 @@ public class PaymentController {
     //通过 @PathVariable 可以将URL中占位符参数{xxx}绑定到处理器类的方法形参中@PathVariable("xxx")
     //http://localhost:8080/getPayment/12345
     public CommonResult getPayment(@PathVariable("id") Long id) {
-        Payment payment = paymentService.getPayment(id);
-        log.info("********查询结果：" + payment);
-        if (payment != null) {
-            return new CommonResult(200, "查询成功,serverPort： " + serverPort, payment);
+//        Payment payment = paymentService.getPayment(id);
+//        log.info("********查询结果：" + payment);
+//        if (payment != null) {
+        if (id != null) {
+            return new CommonResult(200, "查询成功,serverPort： " + serverPort, id);
         } else {
             return new CommonResult(444, "查询失败，无该记录：" + id, null);
         }
